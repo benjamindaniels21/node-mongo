@@ -14,19 +14,18 @@ MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
 
   db.dropCollection("campsites", (err, result) => {
     assert.strictEqual(err, null);
-    console.log("Dropped Collection", result);
+    console.log("Dropped Collection:", result);
 
     dboper.insertDocument(
       db,
-      {
-        name: "Breadcrumb Trail Campground",
-        description: "Test",
-      },
+      { name: "Breadcrumb Trail Campground", description: "Test" },
       "campsites",
       (result) => {
         console.log("Insert Document:", result.ops);
+
         dboper.findDocuments(db, "campsites", (docs) => {
           console.log("Found Documents:", docs);
+
           dboper.updateDocument(
             db,
             { name: "Breadcrumb Trail Campground" },
