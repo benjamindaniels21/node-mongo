@@ -6,6 +6,7 @@ const url = "mongodb://localhost:27017/";
 const dbname = "nucampsite";
 
 MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
+  console.log(err);
   assert.strictEqual(err, null);
 
   console.log("Connected correctly to server");
